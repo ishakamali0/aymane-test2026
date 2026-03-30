@@ -2,12 +2,10 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { ImageWithFallback } from "../figma/ImageWithFallback";
 
-const MAT_IMAGE =
-  "https://images.unsplash.com/photo-1605249386237-f506931f510d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzb2Z0JTIwZ3JlZW4lMjBwcmF5ZXIlMjBtYXQlMjB0ZXh0dXJlJTIwY2xvc2UlMjB1cHxlbnwxfHx8fDE3NzQ4Njg1MzR8MA&ixlib=rb-4.1.0&q=80&w=1080";
+import matImage from "../../../assets/images/mat.jpg";
+import foamImage from "../../../assets/images/foam.jpg";
 
-const FOAM_IMAGE =
-  "https://images.unsplash.com/photo-1570748494944-9683b21d4521?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxmb2FtJTIwbWF0dHJlc3MlMjBsYXllciUyMGNyb3NzJTIwc2VjdGlvbiUyMGRldGFpbCUyMGNsb3NlJTIwdXB8ZW58MXx8fHwxNzc0ODY5MjUzfDA&ixlib=rb-4.1.0&q=80&w=1080";
-
+const images = [matImage, foamImage];
 // All 58 Algerian Wilayas
 const WILAYAS = [
   "01 - أدرار",
@@ -99,7 +97,7 @@ export function HeroWithForm() {
   const [loading, setLoading] = useState(false);
   const [activeImg, setActiveImg] = useState(0);
 
-  const images = [MAT_IMAGE, FOAM_IMAGE];
+ 
 
   const validate = (): Errors => {
     const e: Errors = {};
