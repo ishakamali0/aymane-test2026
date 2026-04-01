@@ -202,175 +202,13 @@ export function HeroWithForm() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8 lg:py-12">
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-start">
 
-          {/* ── LEFT: Product + Hook ── */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-            className="flex flex-col gap-6"
-          >
-            {/* Urgency badge */}
-            <div className="flex items-center gap-2">
-              <span
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border"
-                style={{
-                  background: "#fff8ec",
-                  borderColor: "#f5d08a",
-                  color: "#c47e0a",
-                  fontSize: "0.78rem",
-                  fontWeight: 700,
-                }}
-              >
-                <span className="w-2 h-2 rounded-full bg-orange-400 animate-pulse inline-block" />
-                عرض محدود — الكميات تنفد!
-              </span>
-            </div>
-
-            {/* Headline */}
-            <div>
-              <h1
-                style={{
-                  fontWeight: 900,
-                  fontSize: "clamp(1.5rem, 3.5vw, 2.4rem)",
-                  color: "#0d2020",
-                  lineHeight: 1.35,
-                  marginBottom: "0.6rem",
-                }}
-              >
-                تخلص من آلام الركبة والمفاصل..{" "}
-                <span style={{ color: "#008080" }}>واطلب سجادتك الطبية الآن!</span>
-              </h1>
-              <p
-                style={{
-                  fontSize: "0.95rem",
-                  color: "#5a7070",
-                  lineHeight: 1.9,
-                  fontWeight: 400,
-                }}
-              >
-                سجادة طبية معتمدة من خبراء العظام — مصنوعة من الميموري فوم عالي الكثافة، تحمي ركبتيك وعمودك الفقري أثناء الصلاة.
-              </p>
-            </div>
-
-            {/* Product image with thumbnails */}
-            <div className="relative rounded-2xl overflow-hidden shadow-xl" style={{ aspectRatio: "16/10" }}>
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={activeImg}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.35 }}
-                  className="absolute inset-0"
-                >
-                  <ImageWithFallback
-                    src={images[activeImg]}
-                    alt="السجادة الطبية"
-                    className="w-full h-full object-cover"
-                  />
-                  <div
-                    className="absolute inset-0"
-                    style={{
-                      background:
-                        "linear-gradient(180deg, transparent 60%, rgba(0,50,50,0.3) 100%)",
-                    }}
-                  />
-                </motion.div>
-              </AnimatePresence>
-
-              {/* Thickness badge */}
-              <div
-                className="absolute top-4 left-4 rounded-xl px-3 py-2 shadow-lg"
-                style={{ background: "rgba(255,255,255,0.95)" }}
-              >
-                <div style={{ fontSize: "0.65rem", color: "#888", fontWeight: 500 }}>سماكة الميموري فوم</div>
-                <div style={{ fontSize: "1.1rem", fontWeight: 900, color: "#008080" }}>6 سم</div>
-              </div>
-
-              {/* Thumbnail switchers */}
-              <div className="absolute bottom-4 right-4 flex gap-2">
-                {images.map((img, i) => (
-                  <button
-                    key={i}
-                    onClick={() => setActiveImg(i)}
-                    className="rounded-lg overflow-hidden border-2 transition-all"
-                    style={{
-                      width: 44,
-                      height: 36,
-                      borderColor: activeImg === i ? "#f5a623" : "rgba(255,255,255,0.6)",
-                      boxShadow: activeImg === i ? "0 0 0 2px #f5a623" : "none",
-                    }}
-                  >
-                    <img src={img} alt="" className="w-full h-full object-cover" />
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            {/* Trust badges row */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-              {[
-                { icon: "🚚", title: "توصيل لكل الولايات", color: "#008080" },
-                { icon: "💳", title: "الدفع عند الاستلام", color: "#008080" },
-                { icon: "🛡️", title: "ضمان 7 أيام", color: "#2a7a4a" },
-                { icon: "🏅", title: "معتمد طبياً", color: "#c47e0a" },
-              ].map((b, i) => (
-                <div
-                  key={i}
-                  className="flex flex-col items-center gap-1.5 py-3 px-2 rounded-xl border text-center"
-                  style={{ background: "#fff", borderColor: "#e0eaea" }}
-                >
-                  <span style={{ fontSize: "1.3rem" }}>{b.icon}</span>
-                  <span
-                    style={{
-                      fontSize: "0.68rem",
-                      fontWeight: 700,
-                      color: b.color,
-                      lineHeight: 1.3,
-                    }}
-                  >
-                    {b.title}
-                  </span>
-                </div>
-              ))}
-            </div>
-
-            {/* Social proof mini */}
-            <div
-              className="flex items-center gap-3 p-4 rounded-xl border"
-              style={{ background: "#f0faf6", borderColor: "#b0e0c8" }}
-            >
-              <div className="flex -space-x-2 flex-shrink-0">
-                {["👴", "👵", "🧔"].map((e, i) => (
-                  <div
-                    key={i}
-                    className="w-8 h-8 rounded-full border-2 border-white flex items-center justify-center"
-                    style={{ background: "#d0ede0", fontSize: "0.9rem" }}
-                  >
-                    {e}
-                  </div>
-                ))}
-              </div>
-              <div>
-                <div className="flex gap-0.5 mb-0.5">
-                  {[...Array(5)].map((_, i) => (
-                    <span key={i} style={{ color: "#f5a623", fontSize: "0.75rem" }}>★</span>
-                  ))}
-                </div>
-                <div style={{ fontSize: "0.75rem", color: "#3a6a50", fontWeight: 600 }}>
-                  +2,400 زبون جزائري راضٍ هذا الشهر
-                </div>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* ── RIGHT: Order Form ── */}
+          {/* ── FIRST: Order Form (so user sees it first) ── */}
           <motion.div
             id="order-form"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.55, delay: 0.15 }}
-            className="lg:sticky lg:top-4"
+            className="order-1 lg:order-2 lg:sticky lg:top-4"
           >
             <AnimatePresence mode="wait">
               {submitted ? (
@@ -756,6 +594,168 @@ export function HeroWithForm() {
                 </motion.div>
               )}
             </AnimatePresence>
+          </motion.div>
+
+          {/* ── SECOND: Product + Hook ── */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6 }}
+            className="order-2 lg:order-1 flex flex-col gap-6"
+          >
+            {/* Urgency badge */}
+            <div className="flex items-center gap-2">
+              <span
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border"
+                style={{
+                  background: "#fff8ec",
+                  borderColor: "#f5d08a",
+                  color: "#c47e0a",
+                  fontSize: "0.78rem",
+                  fontWeight: 700,
+                }}
+              >
+                <span className="w-2 h-2 rounded-full bg-orange-400 animate-pulse inline-block" />
+                عرض محدود — الكميات تنفد!
+              </span>
+            </div>
+
+            {/* Headline */}
+            <div>
+              <h1
+                style={{
+                  fontWeight: 900,
+                  fontSize: "clamp(1.5rem, 3.5vw, 2.4rem)",
+                  color: "#0d2020",
+                  lineHeight: 1.35,
+                  marginBottom: "0.6rem",
+                }}
+              >
+                تخلص من آلام الركبة والمفاصل..{" "}
+                <span style={{ color: "#008080" }}>واطلب سجادتك الطبية الآن!</span>
+              </h1>
+              <p
+                style={{
+                  fontSize: "0.95rem",
+                  color: "#5a7070",
+                  lineHeight: 1.9,
+                  fontWeight: 400,
+                }}
+              >
+                سجادة طبية معتمدة من خبراء العظام — مصنوعة من الميموري فوم عالي الكثافة، تحمي ركبتيك وعمودك الفقري أثناء الصلاة.
+              </p>
+            </div>
+
+            {/* Product image with thumbnails */}
+            <div className="relative rounded-2xl overflow-hidden shadow-xl" style={{ aspectRatio: "16/10" }}>
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={activeImg}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.35 }}
+                  className="absolute inset-0"
+                >
+                  <ImageWithFallback
+                    src={images[activeImg]}
+                    alt="السجادة الطبية"
+                    className="w-full h-full object-cover"
+                  />
+                  <div
+                    className="absolute inset-0"
+                    style={{
+                      background:
+                        "linear-gradient(180deg, transparent 60%, rgba(0,50,50,0.3) 100%)",
+                    }}
+                  />
+                </motion.div>
+              </AnimatePresence>
+
+              {/* Thickness badge */}
+              <div
+                className="absolute top-4 left-4 rounded-xl px-3 py-2 shadow-lg"
+                style={{ background: "rgba(255,255,255,0.95)" }}
+              >
+                <div style={{ fontSize: "0.65rem", color: "#888", fontWeight: 500 }}>سماكة الميموري فوم</div>
+                <div style={{ fontSize: "1.1rem", fontWeight: 900, color: "#008080" }}>6 سم</div>
+              </div>
+
+              {/* Thumbnail switchers */}
+              <div className="absolute bottom-4 right-4 flex gap-2">
+                {images.map((img, i) => (
+                  <button
+                    key={i}
+                    onClick={() => setActiveImg(i)}
+                    className="rounded-lg overflow-hidden border-2 transition-all"
+                    style={{
+                      width: 44,
+                      height: 36,
+                      borderColor: activeImg === i ? "#f5a623" : "rgba(255,255,255,0.6)",
+                      boxShadow: activeImg === i ? "0 0 0 2px #f5a623" : "none",
+                    }}
+                  >
+                    <img src={img} alt="" className="w-full h-full object-cover" />
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Trust badges row */}
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+              {[
+                { icon: "🚚", title: "توصيل لكل الولايات", color: "#008080" },
+                { icon: "💳", title: "الدفع عند الاستلام", color: "#008080" },
+                { icon: "🛡️", title: "ضمان 7 أيام", color: "#2a7a4a" },
+                { icon: "🏅", title: "معتمد طبياً", color: "#c47e0a" },
+              ].map((b, i) => (
+                <div
+                  key={i}
+                  className="flex flex-col items-center gap-1.5 py-3 px-2 rounded-xl border text-center"
+                  style={{ background: "#fff", borderColor: "#e0eaea" }}
+                >
+                  <span style={{ fontSize: "1.3rem" }}>{b.icon}</span>
+                  <span
+                    style={{
+                      fontSize: "0.68rem",
+                      fontWeight: 700,
+                      color: b.color,
+                      lineHeight: 1.3,
+                    }}
+                  >
+                    {b.title}
+                  </span>
+                </div>
+              ))}
+            </div>
+
+            {/* Social proof mini */}
+            <div
+              className="flex items-center gap-3 p-4 rounded-xl border"
+              style={{ background: "#f0faf6", borderColor: "#b0e0c8" }}
+            >
+              <div className="flex -space-x-2 flex-shrink-0">
+                {["👴", "👵", "🧔"].map((e, i) => (
+                  <div
+                    key={i}
+                    className="w-8 h-8 rounded-full border-2 border-white flex items-center justify-center"
+                    style={{ background: "#d0ede0", fontSize: "0.9rem" }}
+                  >
+                    {e}
+                  </div>
+                ))}
+              </div>
+              <div>
+                <div className="flex gap-0.5 mb-0.5">
+                  {[...Array(5)].map((_, i) => (
+                    <span key={i} style={{ color: "#f5a623", fontSize: "0.75rem" }}>★</span>
+                  ))}
+                </div>
+                <div style={{ fontSize: "0.75rem", color: "#3a6a50", fontWeight: 600 }}>
+                  +2,400 زبون جزائري راضٍ هذا الشهر
+                </div>
+              </div>
+            </div>
           </motion.div>
         </div>
       </div>
